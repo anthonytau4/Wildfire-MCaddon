@@ -1,0 +1,29 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Wildfire Remastered RP",
+    "description": "Resources for the pixel-remastered Wildfire boss, armor, and tools.",
+    "uuid": "280bdf09-a9c4-4903-a6d6-a0113872c5cc",
+    "version": [
+      2,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "415c946f-9b80-4dfc-85dd-c617f534a844",
+      "version": [
+        2,
+        0,
+        0
+      ]
+    }
+  ]
+}

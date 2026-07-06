@@ -1,0 +1,28 @@
+{
+  "format_version": "1.21.0",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "wildfire:wildfire_pickaxe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "FFF",
+      " B ",
+      " B "
+    ],
+    "key": {
+      "F": {
+        "item": "wildfire:wildfire_shield_fragment"
+      },
+      "B": {
+        "item": "minecraft:blaze_rod"
+      }
+    },
+    "result": {
+      "item": "wildfire:wildfire_pickaxe",
+      "count": 1
+    }
+  }
+}

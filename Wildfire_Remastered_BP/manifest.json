@@ -1,0 +1,54 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Wildfire Remastered BP",
+    "description": "Pixel-remastered Wildfire boss with script-forced attacks, regenerating shields, armor, and blaze-style tools.",
+    "uuid": "ab59c537-bc4e-4ff5-aa8b-230d2f214dc1",
+    "version": [
+      2,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "f7eb4805-e4e0-4e59-a93c-507b0f1ea6d9",
+      "version": [
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "a4a25e38-e065-4b93-92cc-5350c504e71a",
+      "version": [
+        2,
+        0,
+        0
+      ],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "280bdf09-a9c4-4903-a6d6-a0113872c5cc",
+      "version": [
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.13.0"
+    }
+  ]
+}

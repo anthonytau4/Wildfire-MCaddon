@@ -1,0 +1,24 @@
+{
+  "format_version": "1.21.0",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "wildfire:wildfire_helmet"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "FFF",
+      "F F"
+    ],
+    "key": {
+      "F": {
+        "item": "wildfire:wildfire_shield_fragment"
+      }
+    },
+    "result": {
+      "item": "wildfire:wildfire_helmet",
+      "count": 1
+    }
+  }
+}
