@@ -1,0 +1,26 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.wildfire": {
+      "geometry": "Geometry.default",
+      "materials": [
+        { "*": "Material.default" }
+      ],
+      "textures": [
+        "query.variant == 3 ? Texture.phase3 : (query.variant == 2 ? Texture.phase2 : Texture.phase1)"
+      ]
+    },
+    "controller.render.wildfire_armor": {
+      "geometry": "Geometry.default",
+      "materials": [
+        { "*": "Material.armor" }
+      ],
+      "textures": [
+        "Texture.armor"
+      ],
+      "part_visibility": [
+        { "*": "query.property('wildfire:is_armored')" }
+      ]
+    }
+  }
+}

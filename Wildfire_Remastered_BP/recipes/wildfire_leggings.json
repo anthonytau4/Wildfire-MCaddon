@@ -1,0 +1,30 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "wildfire:wildfire_leggings"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "FFF",
+      "F F",
+      "F F"
+    ],
+    "key": {
+      "F": {
+        "item": "wildfire:wildfire_shield_fragment"
+      }
+    },
+    "result": {
+      "item": "wildfire:wildfire_leggings",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "wildfire:wildfire_shield_fragment"
+      }
+    ]
+  }
+}

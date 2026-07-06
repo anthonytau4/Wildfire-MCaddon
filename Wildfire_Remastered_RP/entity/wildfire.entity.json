@@ -1,0 +1,42 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "wildfire:wildfire",
+      "materials": {
+        "default": "entity_alphatest",
+        "armor": "entity_alphatest"
+      },
+      "textures": {
+        "phase1": "textures/entity/wildfire",
+        "phase2": "textures/entity/wildfire_phase2",
+        "phase3": "textures/entity/wildfire_phase3",
+        "armor": "textures/entity/wildfire_armor"
+      },
+      "geometry": {
+        "default": "geometry.wildfire"
+      },
+      "animations": {
+        "idle": "animation.wildfire.idle",
+        "attack": "animation.wildfire.attack",
+        "hurt": "animation.wildfire.hurt",
+        "phase_transition": "animation.wildfire.phase_transition"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          { "attack": "query.is_delayed_attacking" },
+          { "hurt": "query.hurt_time > 0" }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.wildfire",
+        "controller.render.wildfire_armor"
+      ],
+      "spawn_egg": {
+        "base_color": "#3f1607",
+        "overlay_color": "#ffd92b"
+      }
+    }
+  }
+}

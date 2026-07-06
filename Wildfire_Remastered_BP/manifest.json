@@ -1,0 +1,54 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Wildfire Bring It Home BP",
+    "description": "Fixed recipe unlocks, stronger script attacks, 240 HP, cleaner shield breaks, vanilla-style tools.",
+    "uuid": "1692969a-d8d8-4d6b-9010-dafbf3db2648",
+    "version": [
+      3,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "a34535f7-9d6e-488a-9460-aa99c0b96c4f",
+      "version": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "eac40b03-2753-4913-8571-09089e40bdd7",
+      "version": [
+        3,
+        0,
+        0
+      ],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "43f74d41-a139-46f2-9548-16e5355a0aec",
+      "version": [
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.19.0"
+    }
+  ]
+}

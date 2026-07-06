@@ -1,0 +1,33 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "wildfire:wildfire_shovel"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "F",
+      "B",
+      "B"
+    ],
+    "key": {
+      "F": {
+        "item": "wildfire:wildfire_shield_fragment"
+      },
+      "B": {
+        "item": "minecraft:blaze_rod"
+      }
+    },
+    "result": {
+      "item": "wildfire:wildfire_shovel",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "wildfire:wildfire_shield_fragment"
+      }
+    ]
+  }
+}

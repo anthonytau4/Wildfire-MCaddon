@@ -1,0 +1,215 @@
+{
+  "format_version": "1.21.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "wildfire:wildfire",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "wildfire:phase": {
+          "type": "int",
+          "range": [1, 3],
+          "default": 1,
+          "client_sync": true
+        },
+        "wildfire:is_armored": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "wildfire:shield_0": { "minecraft:mark_variant": { "value": 0 } },
+      "wildfire:shield_1": { "minecraft:mark_variant": { "value": 1 } },
+      "wildfire:shield_2": { "minecraft:mark_variant": { "value": 2 } },
+      "wildfire:shield_3": { "minecraft:mark_variant": { "value": 3 } },
+      "wildfire:shield_4": { "minecraft:mark_variant": { "value": 4 } },
+      "wildfire:shield_5": { "minecraft:mark_variant": { "value": 5 } },
+      "wildfire:shield_6": { "minecraft:mark_variant": { "value": 6 } },
+      "wildfire:shield_7": { "minecraft:mark_variant": { "value": 7 } },
+      "wildfire:shield_8": { "minecraft:mark_variant": { "value": 8 } },
+      "wildfire:shield_9": { "minecraft:mark_variant": { "value": 9 } },
+      "wildfire:shield_10": { "minecraft:mark_variant": { "value": 10 } },
+      "wildfire:shield_11": { "minecraft:mark_variant": { "value": 11 } },
+      "wildfire:shield_12": { "minecraft:mark_variant": { "value": 12 } },
+      "wildfire:phase_1": {
+        "minecraft:variant": { "value": 1 },
+        "minecraft:scale": { "value": 1.0 }
+      },
+      "wildfire:phase_2": {
+        "minecraft:variant": { "value": 2 },
+        "minecraft:scale": { "value": 1.08 }
+      },
+      "wildfire:phase_3": {
+        "minecraft:variant": { "value": 3 },
+        "minecraft:scale": { "value": 1.15 }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": ["wildfire", "blaze", "monster", "mob"]
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:experience_reward": {
+        "on_death": "query.last_hit_by_player ? 80 : 0"
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/wildfire.json"
+      },
+      "minecraft:collision_box": {
+        "width": 1.15,
+        "height": 2.75
+      },
+      "minecraft:health": {
+        "value": 300,
+        "max": 300
+      },
+      "minecraft:follow_range": {
+        "value": 48,
+        "max": 48
+      },
+      "minecraft:movement": {
+        "value": 0.23
+      },
+      "minecraft:navigation.hover": {
+        "can_path_over_water": true,
+        "can_path_from_air": true,
+        "avoid_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.hover": {},
+      "minecraft:physics": {
+        "has_gravity": false,
+        "has_collision": true
+      },
+      "minecraft:fire_immune": {},
+      "minecraft:knockback_resistance": {
+        "value": 0.85
+      },
+      "minecraft:boss": {
+        "should_darken_sky": true,
+        "hud_range": 55,
+        "name": "Wildfire"
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_contact_with_water",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "drowning",
+            "damage_per_tick": 3
+          }
+        ]
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          { "cause": "fall", "deals_damage": "no" },
+          { "cause": "fire", "deals_damage": "no" },
+          { "cause": "fire_tick", "deals_damage": "no" },
+          { "cause": "lava", "deals_damage": "no" }
+        ]
+      },
+      "minecraft:on_hurt": {
+        "event": "minecraft:on_hurt_event",
+        "target": "self"
+      },
+      "minecraft:on_hurt_by_player": {
+        "event": "minecraft:on_hurt_event",
+        "target": "self"
+      },
+      "minecraft:nameable": {},
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 5
+      },
+      "minecraft:behavior.random_hover": {
+        "priority": 4,
+        "xz_dist": 6,
+        "y_dist": 2,
+        "y_offset": -2,
+        "hover_height": [1, 3]
+      },
+      "minecraft:conditional_bandwidth_optimization": {}
+    },
+    "events": {
+      "wildfire:set_shield_0": {
+        "remove": { "component_groups": ["wildfire:shield_1","wildfire:shield_2","wildfire:shield_3","wildfire:shield_4","wildfire:shield_5","wildfire:shield_6","wildfire:shield_7","wildfire:shield_8","wildfire:shield_9","wildfire:shield_10","wildfire:shield_11","wildfire:shield_12"] },
+        "add": { "component_groups": ["wildfire:shield_0"] }
+      },
+      "wildfire:set_shield_1": {
+        "remove": { "component_groups": ["wildfire:shield_0","wildfire:shield_2","wildfire:shield_3","wildfire:shield_4","wildfire:shield_5","wildfire:shield_6","wildfire:shield_7","wildfire:shield_8","wildfire:shield_9","wildfire:shield_10","wildfire:shield_11","wildfire:shield_12"] },
+        "add": { "component_groups": ["wildfire:shield_1"] }
+      },
+      "wildfire:set_shield_2": {
+        "remove": { "component_groups": ["wildfire:shield_0","wildfire:shield_1","wildfire:shield_3","wildfire:shield_4","wildfire:shield_5","wildfire:shield_6","wildfire:shield_7","wildfire:shield_8","wildfire:shield_9","wildfire:shield_10","wildfire:shield_11","wildfire:shield_12"] },
+        "add": { "component_groups": ["wildfire:shield_2"] }
+      },
+      "wildfire:set_shield_3": {
+        "remove": { "component_groups": ["wildfire:shield_0","wildfire:shield_1","wildfire:shield_2","wildfire:shield_4","wildfire:shield_5","wildfire:shield_6","wildfire:shield_7","wildfire:shield_8","wildfire:shield_9","wildfire:shield_10","wildfire:shield_11","wildfire:shield_12"] },
+        "add": { "component_groups": ["wildfire:shield_3"] }
+      },
+      "wildfire:set_shield_4": {
+        "remove": { "component_groups": ["wildfire:shield_0","wildfire:shield_1","wildfire:shield_2","wildfire:shield_3","wildfire:shield_5","wildfire:shield_6","wildfire:shield_7","wildfire:shield_8","wildfire:shield_9","wildfire:shield_10","wildfire:shield_11","wildfire:shield_12"] },
+        "add": { "component_groups": ["wildfire:shield_4"] }
+      },
+      "wildfire:set_shield_5": {
+        "remove": { "component_groups": ["wildfire:shield_0","wildfire:shield_1","wildfire:shield_2","wildfire:shield_3","wildfire:shield_4","wildfire:shield_6","wildfire:shield_7","wildfire:shield_8","wildfire:shield_9","wildfire:shield_10","wildfire:shield_11","wildfire:shield_12"] },
+        "add": { "component_groups": ["wildfire:shield_5"] }
+      },
+      "wildfire:set_shield_6": {
+        "remove": { "component_groups": ["wildfire:shield_0","wildfire:shield_1","wildfire:shield_2","wildfire:shield_3","wildfire:shield_4","wildfire:shield_5","wildfire:shield_7","wildfire:shield_8","wildfire:shield_9","wildfire:shield_10","wildfire:shield_11","wildfire:shield_12"] },
+        "add": { "component_groups": ["wildfire:shield_6"] }
+      },
+      "wildfire:set_shield_7": {
+        "remove": { "component_groups": ["wildfire:shield_0","wildfire:shield_1","wildfire:shield_2","wildfire:shield_3","wildfire:shield_4","wildfire:shield_5","wildfire:shield_6","wildfire:shield_8","wildfire:shield_9","wildfire:shield_10","wildfire:shield_11","wildfire:shield_12"] },
+        "add": { "component_groups": ["wildfire:shield_7"] }
+      },
+      "wildfire:set_shield_8": {
+        "remove": { "component_groups": ["wildfire:shield_0","wildfire:shield_1","wildfire:shield_2","wildfire:shield_3","wildfire:shield_4","wildfire:shield_5","wildfire:shield_6","wildfire:shield_7","wildfire:shield_9","wildfire:shield_10","wildfire:shield_11","wildfire:shield_12"] },
+        "add": { "component_groups": ["wildfire:shield_8"] }
+      },
+      "wildfire:set_shield_9": {
+        "remove": { "component_groups": ["wildfire:shield_0","wildfire:shield_1","wildfire:shield_2","wildfire:shield_3","wildfire:shield_4","wildfire:shield_5","wildfire:shield_6","wildfire:shield_7","wildfire:shield_8","wildfire:shield_10","wildfire:shield_11","wildfire:shield_12"] },
+        "add": { "component_groups": ["wildfire:shield_9"] }
+      },
+      "wildfire:set_shield_10": {
+        "remove": { "component_groups": ["wildfire:shield_0","wildfire:shield_1","wildfire:shield_2","wildfire:shield_3","wildfire:shield_4","wildfire:shield_5","wildfire:shield_6","wildfire:shield_7","wildfire:shield_8","wildfire:shield_9","wildfire:shield_11","wildfire:shield_12"] },
+        "add": { "component_groups": ["wildfire:shield_10"] }
+      },
+      "wildfire:set_shield_11": {
+        "remove": { "component_groups": ["wildfire:shield_0","wildfire:shield_1","wildfire:shield_2","wildfire:shield_3","wildfire:shield_4","wildfire:shield_5","wildfire:shield_6","wildfire:shield_7","wildfire:shield_8","wildfire:shield_9","wildfire:shield_10","wildfire:shield_12"] },
+        "add": { "component_groups": ["wildfire:shield_11"] }
+      },
+      "wildfire:set_shield_12": {
+        "remove": { "component_groups": ["wildfire:shield_0","wildfire:shield_1","wildfire:shield_2","wildfire:shield_3","wildfire:shield_4","wildfire:shield_5","wildfire:shield_6","wildfire:shield_7","wildfire:shield_8","wildfire:shield_9","wildfire:shield_10","wildfire:shield_11"] },
+        "add": { "component_groups": ["wildfire:shield_12"] }
+      },
+      "wildfire:enter_phase_1": {
+        "remove": { "component_groups": ["wildfire:phase_2", "wildfire:phase_3"] },
+        "add": { "component_groups": ["wildfire:phase_1"] }
+      },
+      "wildfire:enter_phase_2": {
+        "remove": { "component_groups": ["wildfire:phase_1", "wildfire:phase_3"] },
+        "add": { "component_groups": ["wildfire:phase_2"] }
+      },
+      "wildfire:enter_phase_3": {
+        "remove": { "component_groups": ["wildfire:phase_1", "wildfire:phase_2"] },
+        "add": { "component_groups": ["wildfire:phase_3"] }
+      },
+      "minecraft:entity_spawned": {
+        "add": { "component_groups": ["wildfire:shield_12", "wildfire:phase_1"] }
+      }
+    }
+  }
+}

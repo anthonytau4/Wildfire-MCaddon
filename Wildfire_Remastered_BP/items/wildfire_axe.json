@@ -1,0 +1,89 @@
+{
+  "format_version": "1.21.0",
+  "minecraft:item": {
+    "description": {
+      "identifier": "wildfire:wildfire_axe",
+      "menu_category": {
+        "category": "equipment",
+        "group": "minecraft:itemGroup.name.axe"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "item.wildfire:wildfire_axe.name"
+      },
+      "minecraft:icon": "wildfire_axe",
+      "minecraft:max_stack_size": 1,
+      "minecraft:rarity": "rare",
+      "minecraft:hand_equipped": true,
+      "minecraft:damage": 10,
+      "minecraft:durability": {
+        "damage_chance": {
+          "min": 60,
+          "max": 100
+        },
+        "max_durability": 2031
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "wildfire:wildfire_shield_fragment"
+            ],
+            "repair_amount": "query.max_durability * 0.25"
+          }
+        ]
+      },
+      "minecraft:enchantable": {
+        "slot": "axe",
+        "value": 18
+      },
+      "minecraft:tags": {
+        "tags": [
+          "minecraft:is_axe"
+        ]
+      },
+      "minecraft:digger": {
+        "use_efficiency": true,
+        "destroy_speeds": [
+          {
+            "block": "minecraft:stone",
+            "speed": 9
+          },
+          {
+            "block": "minecraft:cobblestone",
+            "speed": 9
+          },
+          {
+            "block": "minecraft:deepslate",
+            "speed": 7
+          },
+          {
+            "block": "minecraft:dirt",
+            "speed": 8
+          },
+          {
+            "block": "minecraft:grass_block",
+            "speed": 8
+          },
+          {
+            "block": "minecraft:sand",
+            "speed": 8
+          },
+          {
+            "block": "minecraft:gravel",
+            "speed": 8
+          },
+          {
+            "block": "minecraft:oak_log",
+            "speed": 8
+          },
+          {
+            "block": "minecraft:planks",
+            "speed": 8
+          }
+        ]
+      }
+    }
+  }
+}

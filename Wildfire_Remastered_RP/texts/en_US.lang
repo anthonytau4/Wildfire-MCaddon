@@ -1,0 +1,12 @@
+entity.wildfire:wildfire.name=Wildfire
+item.wildfire:wildfire_spawn_egg.name=Wildfire Spawn Egg
+item.wildfire:wildfire_shield_fragment.name=Wildfire Shield Fragment
+item.wildfire:wildfire_helmet.name=Wildfire Helmet
+item.wildfire:wildfire_chestplate.name=Wildfire Chestplate
+item.wildfire:wildfire_leggings.name=Wildfire Leggings
+item.wildfire:wildfire_boots.name=Wildfire Boots
+item.wildfire:wildfire_sword.name=Wildfire Sword
+item.wildfire:wildfire_pickaxe.name=Wildfire Pickaxe
+item.wildfire:wildfire_axe.name=Wildfire Axe
+item.wildfire:wildfire_shovel.name=Wildfire Shovel
+item.wildfire:wildfire_hoe.name=Wildfire Hoe

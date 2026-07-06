@@ -1,0 +1,144 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.wildfire.idle": {
+      "loop": true,
+      "bones": {
+        "root": {
+          "position": [
+            0,
+            "math.sin(query.life_time * 80) * 0.35 - query.life_time * 0.02",
+            0
+          ]
+        },
+        "body": {
+          "rotation": [0, 0, 0]
+        },
+        "head": {
+          "position": [
+            0,
+            "math.sin(query.life_time * 100) * 0.12",
+            0
+          ],
+          "rotation": [
+            "query.target_x_rotation * 0.35",
+            "query.target_y_rotation * 0.35",
+            0
+          ]
+        },
+        "shields_root": {
+          "rotation": [
+            0,
+            "query.life_time * 25",
+            0
+          ],
+          "position": [
+            0,
+            "math.sin(query.life_time * 90) * 0.18",
+            0
+          ]
+        },
+        "shield_front": {
+          "scale": [
+            "query.mark_variant >= 1 ? 1 : 0",
+            "query.mark_variant >= 1 ? 1 : 0",
+            "query.mark_variant >= 1 ? 1 : 0"
+          ],
+          "rotation": [
+            "-5 + math.sin(query.life_time * 120) * 2",
+            0,
+            0
+          ]
+        },
+        "shield_right": {
+          "scale": [
+            "query.mark_variant >= 4 ? 1 : 0",
+            "query.mark_variant >= 4 ? 1 : 0",
+            "query.mark_variant >= 4 ? 1 : 0"
+          ],
+          "rotation": [
+            "-5 + math.sin(query.life_time * 120) * 2",
+            90,
+            0
+          ]
+        },
+        "shield_back": {
+          "scale": [
+            "query.mark_variant >= 7 ? 1 : 0",
+            "query.mark_variant >= 7 ? 1 : 0",
+            "query.mark_variant >= 7 ? 1 : 0"
+          ],
+          "rotation": [
+            "5 + math.sin(query.life_time * 120) * 2",
+            180,
+            0
+          ]
+        },
+        "shield_left": {
+          "scale": [
+            "query.mark_variant >= 10 ? 1 : 0",
+            "query.mark_variant >= 10 ? 1 : 0",
+            "query.mark_variant >= 10 ? 1 : 0"
+          ],
+          "rotation": [
+            "-5 + math.sin(query.life_time * 120) * 2",
+            -90,
+            0
+          ]
+        }
+      }
+    },
+    "animation.wildfire.attack": {
+      "loop": true,
+      "bones": {
+        "shields_root": {
+          "rotation": [
+            0,
+            "query.life_time * 65",
+            0
+          ]
+        },
+        "root": {
+          "position": [
+            0,
+            "math.sin(query.life_time * 200) * 0.4",
+            0
+          ]
+        }
+      }
+    },
+    "animation.wildfire.hurt": {
+      "loop": false,
+      "animation_length": 0.25,
+      "bones": {
+        "root": {
+          "rotation": [
+            0,
+            0,
+            "math.sin(query.life_time * 900) * 5"
+          ]
+        }
+      }
+    },
+    "animation.wildfire.phase_transition": {
+      "loop": false,
+      "animation_length": 2.0,
+      "bones": {
+        "root": {
+          "position": [
+            0,
+            "math.sin(query.anim_time * 360) * 1.5",
+            0
+          ]
+        },
+        "shields_root": {
+          "rotation": [
+            0,
+            "query.anim_time * 720",
+            0
+          ]
+        }
+      }
+    }
+  }
+}
