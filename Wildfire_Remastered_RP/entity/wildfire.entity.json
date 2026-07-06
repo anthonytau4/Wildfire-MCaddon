@@ -4,14 +4,12 @@
     "description": {
       "identifier": "wildfire:wildfire",
       "materials": {
-        "default": "entity_alphatest",
-        "armor": "entity_alphatest"
+        "default": "entity_alphatest"
       },
       "textures": {
         "phase1": "textures/entity/wildfire",
         "phase2": "textures/entity/wildfire_phase2",
-        "phase3": "textures/entity/wildfire_phase3",
-        "armor": "textures/entity/wildfire_armor"
+        "phase3": "textures/entity/wildfire_phase3"
       },
       "geometry": {
         "default": "geometry.wildfire"
@@ -30,8 +28,7 @@
         ]
       },
       "render_controllers": [
-        "controller.render.wildfire",
-        "controller.render.wildfire_armor"
+        "controller.render.wildfire"
       ],
       "spawn_egg": {
         "base_color": "#3f1607",

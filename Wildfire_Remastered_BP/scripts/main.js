@@ -44,10 +44,8 @@ function st(e) {
       teleportChargeTick: 0,
       teleportTarget: null,
       armorActive: false,
-      armorStart: -999999,
       phaseTransition: false,
-      phaseTransitionTick: 0,
-      driftOffset: 0
+      phaseTransitionTick: 0
     });
   }
   return state.get(k);
@@ -164,6 +162,19 @@ function enterPhase(e, newPhase) {
       s.phaseTransition = false;
     }
   }, 40);
+
+  // Show grey regeneration aura during transition via pulsing grey smoke
+  for (let t = 0; t < 4; t++) {
+    system.runTimeout(() => {
+      if (!isWildfire(e)) return;
+      for (let i = 0; i < 8; i++) {
+        const a = Math.random() * Math.PI * 2;
+        const r = 0.6 + Math.random() * 1.2;
+        p(e, "minecraft:basic_smoke_particle", Math.cos(a) * r, 0.3 + Math.random() * 2.5, Math.sin(a) * r);
+        p(e, "minecraft:campfire_smoke_particle", Math.cos(a) * r * 0.5, 0.5 + Math.random() * 2, Math.sin(a) * r * 0.5);
+      }
+    }, t * 10);
+  }
 }
 
 // --- Particle effects ---
@@ -208,7 +219,7 @@ function teleportSwirl(e) {
 function tryTeleport(e, target, tick) {
   const s = st(e);
   const phase = s.phase;
-  const cooldown = phase === 1 ? 300 : phase === 2 ? 200 : 140; // Shorter cooldown in later phases
+  const cooldown = phase === 1 ? 300 : phase === 2 ? 240 : 200; // 15s / 12s / 10s
 
   if (tick - s.lastTeleport < cooldown) return;
   if (target.dist < 5 || target.dist > 30) return;
@@ -273,11 +284,9 @@ function updateArmor(e, tick) {
   if (shouldArmor && !s.armorActive) {
     s.armorActive = true;
     s.armorStart = tick;
-    safe(() => e.setProperty("wildfire:is_armored", true));
     play(e, "mob.wither.ambient", 1.2, 0.6);
   } else if (!shouldArmor && s.armorActive) {
     s.armorActive = false;
-    safe(() => e.setProperty("wildfire:is_armored", false));
   }
 
   // While armored, regenerate health slowly
@@ -500,19 +509,37 @@ function fireOrLavaNear(e) {
 
 // --- Downward drift (blaze-like slow descent) ---
 function applyDrift(e) {
-  const s = st(e);
   const loc = e.location;
-  // Gently push downward unless very close to ground
-  const blockBelow = safe(() => e.dimension.getBlock({
-    x: Math.floor(loc.x),
-    y: Math.floor(loc.y - 1),
-    z: Math.floor(loc.z)
-  }));
-  const isAir = !blockBelow || blockBelow.typeId === "minecraft:air" || blockBelow.typeId === "minecraft:cave_air";
-  if (isAir && loc.y > 1) {
-    // Slow downward impulse like a blaze gently drifting down
-    safe(() => e.applyImpulse({ x: 0, y: -0.018, z: 0 }));
+  // Check how far above the nearest solid ground we are
+  let groundY = loc.y;
+  for (let dy = 0; dy <= 8; dy++) {
+    const checkY = Math.floor(loc.y) - dy;
+    if (checkY < 0) break;
+    const block = safe(() => e.dimension.getBlock({
+      x: Math.floor(loc.x),
+      y: checkY,
+      z: Math.floor(loc.z)
+    }));
+    const id = block?.typeId ?? "";
+    if (id !== "minecraft:air" && id !== "minecraft:cave_air" && id !== "") {
+      groundY = checkY + 1;
+      break;
+    }
   }
+  const heightAboveGround = loc.y - groundY;
+
+  // Ideal hover height is 2-4 blocks above ground
+  if (heightAboveGround > 5) {
+    // Too high — drift down gently
+    safe(() => e.applyImpulse({ x: 0, y: -0.025, z: 0 }));
+  } else if (heightAboveGround > 3.5) {
+    // Slightly high — very gentle nudge down
+    safe(() => e.applyImpulse({ x: 0, y: -0.008, z: 0 }));
+  } else if (heightAboveGround < 1.5) {
+    // Too low — nudge up slightly
+    safe(() => e.applyImpulse({ x: 0, y: 0.012, z: 0 }));
+  }
+  // Between 1.5 and 3.5: do nothing, let the natural bob handle it
 }
 
 // --- Ambient effects per phase ---
@@ -573,7 +600,6 @@ safe(() => world.afterEvents.entitySpawn.subscribe((event) => {
     burst(event.entity, true);
     play(event.entity, "mob.blaze.breathe", 0.65, 1.8);
     safe(() => event.entity.setProperty("wildfire:phase", 1));
-    safe(() => event.entity.setProperty("wildfire:is_armored", false));
     safe(() => event.entity.triggerEvent("wildfire:enter_phase_1"));
   }
 }));

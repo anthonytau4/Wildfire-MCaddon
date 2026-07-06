@@ -12,11 +12,6 @@
           "range": [1, 3],
           "default": 1,
           "client_sync": true
-        },
-        "wildfire:is_armored": {
-          "type": "bool",
-          "default": false,
-          "client_sync": true
         }
       }
     },
@@ -109,10 +104,10 @@
       },
       "minecraft:damage_sensor": {
         "triggers": [
-          { "cause": "fall", "deals_damage": "no" },
-          { "cause": "fire", "deals_damage": "no" },
-          { "cause": "fire_tick", "deals_damage": "no" },
-          { "cause": "lava", "deals_damage": "no" }
+          { "cause": "fall", "deals_damage": false },
+          { "cause": "fire", "deals_damage": false },
+          { "cause": "fire_tick", "deals_damage": false },
+          { "cause": "lava", "deals_damage": false }
         ]
       },
       "minecraft:on_hurt": {

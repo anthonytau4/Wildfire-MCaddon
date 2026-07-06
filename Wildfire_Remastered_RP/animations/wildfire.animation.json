@@ -7,7 +7,7 @@
         "root": {
           "position": [
             0,
-            "math.sin(query.life_time * 80) * 0.35 - query.life_time * 0.02",
+            "math.sin(query.life_time * 80) * 0.35",
             0
           ]
         },
