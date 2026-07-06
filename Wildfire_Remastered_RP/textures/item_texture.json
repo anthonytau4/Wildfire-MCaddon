@@ -1,0 +1,36 @@
+{
+  "resource_pack_name": "wildfire_remastered_rp",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "wildfire_shield_fragment": {
+      "textures": "textures/items/wildfire_shield_fragment"
+    },
+    "wildfire_sword": {
+      "textures": "textures/items/wildfire_sword"
+    },
+    "wildfire_pickaxe": {
+      "textures": "textures/items/wildfire_pickaxe"
+    },
+    "wildfire_axe": {
+      "textures": "textures/items/wildfire_axe"
+    },
+    "wildfire_shovel": {
+      "textures": "textures/items/wildfire_shovel"
+    },
+    "wildfire_hoe": {
+      "textures": "textures/items/wildfire_hoe"
+    },
+    "wildfire_helmet": {
+      "textures": "textures/items/wildfire_helmet"
+    },
+    "wildfire_chestplate": {
+      "textures": "textures/items/wildfire_chestplate"
+    },
+    "wildfire_leggings": {
+      "textures": "textures/items/wildfire_leggings"
+    },
+    "wildfire_boots": {
+      "textures": "textures/items/wildfire_boots"
+    }
+  }
+}
